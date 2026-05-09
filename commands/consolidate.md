@@ -4,11 +4,13 @@ description: 巩固 session 日志到项目记忆（海马体 replay）
 
 # 巩固记忆
 
-读取 `memory/sessions/` 下未处理的 session 日志，提炼关键信息到 `memory/projects/` 和 `memory/MEMORY.md`。
+读取 auto memory 目录下 `sessions/` 中未处理的 session 日志，提炼关键信息到 `projects/` 和 `MEMORY.md`。
+
+> **路径说明**：所有操作均在 Claude Code 的 auto memory 目录（`~/.claude/projects/<workspace>/memory/`）下进行。从系统提示中的 `persistent auto memory directory` 获知具体路径。
 
 ## 流程
 
-1. 扫描 `memory/sessions/` 找到未标记 `[consolidated]` 的文件
+1. 扫描 `<auto-memory-dir>/sessions/` 找到未标记 `[consolidated]` 的文件
 2. 对每个 session 日志：
    - 提取项目状态变更 → 更新对应 `projects/<name>.md`
    - 提取关键发现/决策 → 追加到 `projects/<name>.md`

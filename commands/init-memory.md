@@ -8,18 +8,20 @@ description: 初始化当前工作区的海马体记忆系统
 
 ## 流程
 
-1. 获取当前工作区路径（`$PWD`）
-2. 检查 `memory/MEMORY.md` 是否存在
+> **路径说明**：Claude Code 的 project memory 目录由系统自动管理，路径为 `~/.claude/projects/<workspace>/memory/`（即你当前可写入的 auto memory 目录）。以下所有操作均在此目录下进行。
+
+1. 获取 auto memory 目录路径（从系统提示中的 `persistent auto memory directory` 获知）
+2. 检查该目录下是否已有 `MEMORY.md`
 3. 若已存在：提示"记忆系统已初始化"，显示文件列表，结束
 4. 若不存在，执行以下初始化：
 
 ### 创建目录结构
 
 ```bash
-mkdir -p memory/projects memory/sessions
+mkdir -p <auto-memory-dir>/projects <auto-memory-dir>/sessions
 ```
 
-### 生成 `memory/MEMORY.md`
+### 生成 `MEMORY.md`
 
 使用以下模板（根据当前工作区自动填充工作区名称）：
 
@@ -43,11 +45,11 @@ mkdir -p memory/projects memory/sessions
 切换模型时：`读取 memory/MEMORY.md 和 memory/projects/<项目>.md`
 ```
 
-### 生成 `memory/projects/.gitkeep`
+### 生成 `projects/.gitkeep`
 
 空文件，确保 git 能追踪空目录。
 
-### 生成 `memory/sessions/.gitkeep`
+### 生成 `sessions/.gitkeep`
 
 空文件，确保 git 能追踪空目录。
 
