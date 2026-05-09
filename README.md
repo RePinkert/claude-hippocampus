@@ -1,4 +1,4 @@
-# hippocapmus — 海马体记忆系统
+# claude-hippocampus — 海马体记忆系统
 
 跨项目、跨模型的 Session 间知识持久化方案。借鉴海马体的记忆机制（编码 → 巩固 → 检索），用文件系统模拟长期记忆。
 
@@ -6,8 +6,8 @@
 
 ```bash
 # 克隆项目
-git clone <repo-url> hippocapmus
-cd hippocapmus
+git clone https://github.com/RePinkert/claude-hippocampus.git
+cd claude-hippocampus
 
 # 一键安装命令到 Claude Code
 bash install.sh
