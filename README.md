@@ -41,7 +41,7 @@ cp commands/*.md ~/.claude/commands/
 读取 memory/MEMORY.md 和 memory/projects/<项目>.md
 ```
 
-**结束时**：写入 Session 日志到 `memory/sessions/YYYY-MM-DD.md`
+**结束时**：写入 Session 日志到 `memory/sessions/YYYY-MM-DD-HHMM.md`
 
 ### 3. 巩固记忆
 
@@ -54,12 +54,12 @@ cp commands/*.md ~/.claude/commands/
 ## 架构
 
 ```
-~/.claude/projects/<workspace>/memory/
+<workspace>/memory/
 ├── MEMORY.md              ← 全局索引（自动加载，< 80 行）
 ├── projects/              ← 语义记忆（按需读取）
 │   └── <project>.md
 └── sessions/              ← 情景记忆（仅巩固时读取）
-    └── YYYY-MM-DD.md
+    └── YYYY-MM-DD-HHMM.md
 ```
 
 ### 海马体映射

@@ -36,7 +36,7 @@ mkdir -p memory/projects memory/sessions
 
 ## Session Protocol
 - **开始**：读取 `memory/MEMORY.md` + `memory/projects/<项目>.md`
-- **结束**：写入 `memory/sessions/YYYY-MM-DD.md`
+- **结束**：写入 `memory/sessions/YYYY-MM-DD-HHMM.md`
 - **巩固**：执行 `/consolidate`
 
 ## Model Switching
