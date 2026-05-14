@@ -21,6 +21,8 @@ cp commands/*.md ~/.claude/commands/
 
 ## 使用
 
+> `<auto-memory-dir>` 即 Claude Code 系统提示中 `persistent auto memory directory` 指定的路径，通常为 `~/.claude/projects/<workspace-id>/memory/`。
+
 ### 1. 初始化工作区记忆
 
 在任意工作区的 Claude Code 中执行：
@@ -30,18 +32,18 @@ cp commands/*.md ~/.claude/commands/
 ```
 
 自动创建：
-- `memory/MEMORY.md` — 全局索引（自动加载）
-- `memory/projects/` — 项目记忆目录
-- `memory/sessions/` — Session 日志目录
+- `<auto-memory-dir>/MEMORY.md` — 全局索引（自动加载）
+- `<auto-memory-dir>/projects/` — 项目记忆目录
+- `<auto-memory-dir>/sessions/` — Session 日志目录
 
 ### 2. 每次 Session
 
 **开始时**：读取相关项目记忆
 ```
-读取 memory/MEMORY.md 和 memory/projects/<项目>.md
+读取 <auto-memory-dir>/MEMORY.md 和 <auto-memory-dir>/projects/<项目>.md
 ```
 
-**结束时**：写入 Session 日志到 `memory/sessions/YYYY-MM-DD-HHMM.md`
+**结束时**：执行 `date +%Y-%m-%d-%H%M`，写入 Session 日志到 `<auto-memory-dir>/sessions/<timestamp>.md`
 
 ### 3. 巩固记忆
 
@@ -53,8 +55,10 @@ cp commands/*.md ~/.claude/commands/
 
 ## 架构
 
+> `<auto-memory-dir>` 即 Claude Code 系统提示中 `persistent auto memory directory` 指定的路径。
+
 ```
-<workspace>/memory/
+<auto-memory-dir>/
 ├── MEMORY.md              ← 全局索引（自动加载，< 80 行）
 ├── projects/              ← 语义记忆（按需读取）
 │   └── <project>.md
