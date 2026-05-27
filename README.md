@@ -51,7 +51,7 @@ cp commands/*.md ~/.claude/commands/
 /consolidate
 ```
 
-从 session 日志提炼关键信息到项目记忆。
+从 session 日志提炼关键信息到项目记忆。包含**遗忘机制**：修剪过时/重复/已完成内容（需用户确认），并将已巩固的 session 日志归档到 `sessions/archive/`。
 
 ## 架构
 
@@ -63,7 +63,8 @@ cp commands/*.md ~/.claude/commands/
 ├── projects/              ← 语义记忆（按需读取）
 │   └── <project>.md
 └── sessions/              ← 情景记忆（仅巩固时读取）
-    └── YYYY-MM-DD-HHMM.md
+    ├── YYYY-MM-DD-HHMM.md
+    └── archive/           ← 已巩固的 session 日志（归档保留）
 ```
 
 ### 海马体映射
@@ -73,7 +74,8 @@ cp commands/*.md ~/.claude/commands/
 | 工作记忆 | `MEMORY.md` | 自动（每次 session） |
 | 语义记忆 | `projects/*.md` | 按需（提到项目时） |
 | 情景记忆 | `sessions/*.md` | 仅巩固时 |
-| 记忆巩固 | `/consolidate` | 手动触发 |
+| 记忆巩固 | `/consolidate` | 手动触发（含遗忘修剪） |
+| 记忆遗忘 | `/consolidate` 步骤 5 | 修剪过时/重复内容（需用户确认） |
 
 ### 上下文成本
 
